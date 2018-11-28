@@ -85,12 +85,15 @@ class MemeEditorViewController: UIViewController {
     
     func save() {
         // Create a meme instance.
-        let _ = Meme(
+        let meme = Meme(
             topText: topTextField.text!,
             bottomText: bottomTextField.text!,
             originalImage: imageView.image!,
             memedImage: generateMemedImage()
         )
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     // MARK: Keyboard Related Methods
