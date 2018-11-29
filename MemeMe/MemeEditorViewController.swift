@@ -12,7 +12,7 @@ class MemeEditorViewController: UIViewController {
 
     // MARK: Outlets
     
-    @IBOutlet var navbar: UIToolbar!
+    @IBOutlet var navbar: UINavigationBar!
     @IBOutlet var toolbar: UIToolbar!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var topTextField: UITextField!
@@ -84,7 +84,6 @@ class MemeEditorViewController: UIViewController {
     }
     
     func save() {
-        // Create a meme instance.
         let meme = Meme(
             topText: topTextField.text!,
             bottomText: bottomTextField.text!,
@@ -145,6 +144,7 @@ class MemeEditorViewController: UIViewController {
         activityView.completionWithItemsHandler = { activityType, completed, returnedItems, activityError in
             if completed {
                 self.save()
+                self.dismiss()
             }
             
             return
@@ -153,10 +153,7 @@ class MemeEditorViewController: UIViewController {
         present(activityView, animated: true, completion: nil)
     }
     
-    @IBAction func newMeme() {
-        imageView.image = nil
-        topTextField.text = topTextFieldDelegate.defaultText
-        bottomTextField.text = bottomTextFieldDelegate.defaultText
-        shareButton.isEnabled = false
+    @IBAction func dismiss() {
+        dismiss(animated: true, completion: nil)
     }
 }
