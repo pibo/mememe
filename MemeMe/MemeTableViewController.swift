@@ -19,6 +19,15 @@ class MemeTableViewController: UITableViewController {
     
     // MARK: Life Cycle Methods
     
+    override func viewDidLoad() {
+        
+        // Show the editor right away if there are no memes yet.
+        if memes.isEmpty {
+            let editor = storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
+            present(editor, animated: false)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()

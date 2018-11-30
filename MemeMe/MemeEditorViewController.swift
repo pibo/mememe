@@ -19,8 +19,14 @@ class MemeEditorViewController: UIViewController {
     @IBOutlet var bottomTextField: UITextField!
     @IBOutlet var shareButton: UIBarButtonItem!
     @IBOutlet var cameraButton: UIBarButtonItem!
+    @IBOutlet var cancelButton: UIBarButtonItem!
     
     // MARK: Properties
+    
+    var memes: [Meme] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.memes
+    }
     
     let imagePicker = UIImagePickerController()
     let topTextFieldDelegate = TextFieldDelegate(defaultText: "TOP")
@@ -40,6 +46,12 @@ class MemeEditorViewController: UIViewController {
         imagePicker.delegate = self
         
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        
+        // Disallow the user to dismiss the editor if there are no memes.
+        if memes.isEmpty {
+            cancelButton.isEnabled = false
+            cancelButton.tintColor = .clear
+        }
         
         setupTextField(topTextField, delegate: topTextFieldDelegate)
         setupTextField(bottomTextField, delegate: bottomTextFieldDelegate)

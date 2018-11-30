@@ -29,7 +29,7 @@
         <!--Meme Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditorViewController" id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,6 +135,7 @@
                     <connections>
                         <outlet property="bottomTextField" destination="8mh-QJ-YIg" id="dPy-pz-kje"/>
                         <outlet property="cameraButton" destination="QBh-7S-ea2" id="y2B-A4-BB1"/>
+                        <outlet property="cancelButton" destination="bsX-qe-DPc" id="DPs-pr-Rcq"/>
                         <outlet property="imageView" destination="7gs-Id-5rR" id="JDM-Hs-CUL"/>
                         <outlet property="navbar" destination="qhA-zT-fqk" id="ELC-dZ-bBT"/>
                         <outlet property="shareButton" destination="Bdn-VR-laB" id="taI-ub-89R"/>
