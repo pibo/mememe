@@ -10,8 +10,9 @@ import UIKit
 
 class MemeTableViewCell: UITableViewCell {
 
+    // MARK: Outlets
+    
     @IBOutlet var memeImageView: UIImageView!
     @IBOutlet var topText: UILabel!
     @IBOutlet var bottomText: UILabel!
-
 }

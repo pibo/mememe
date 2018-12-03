@@ -17,6 +17,9 @@
 		987DABA3216D57B800691AB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 987DABA1216D57B800691AB8 /* LaunchScreen.storyboard */; };
 		98DA804C21B0403D00CE3A22 /* MemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DA804B21B0403D00CE3A22 /* MemeTableViewController.swift */; };
 		98DA804E21B0476D00CE3A22 /* MemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DA804D21B0476D00CE3A22 /* MemeTableViewCell.swift */; };
+		98DA805121B556CB00CE3A22 /* MemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DA805021B556CB00CE3A22 /* MemeCollectionViewController.swift */; };
+		98DA805321B5579000CE3A22 /* MemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DA805221B5579000CE3A22 /* MemeCollectionViewCell.swift */; };
+		98DA805521B55A3E00CE3A22 /* CollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DA805421B55A3E00CE3A22 /* CollectionViewDelegateFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		987DABA4216D57B800691AB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98DA804B21B0403D00CE3A22 /* MemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeTableViewController.swift; sourceTree = "<group>"; };
 		98DA804D21B0476D00CE3A22 /* MemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeTableViewCell.swift; sourceTree = "<group>"; };
+		98DA805021B556CB00CE3A22 /* MemeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewController.swift; sourceTree = "<group>"; };
+		98DA805221B5579000CE3A22 /* MemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewCell.swift; sourceTree = "<group>"; };
+		98DA805421B55A3E00CE3A22 /* CollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDelegateFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +56,7 @@
 			children = (
 				981E07282174BD9A005FAAA3 /* ImagePickerControllerDelegate.swift */,
 				981E072A2174C1E8005FAAA3 /* TextFieldDelegate.swift */,
+				98DA805421B55A3E00CE3A22 /* CollectionViewDelegateFlowLayout.swift */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -76,6 +83,7 @@
 				987DAB98216D57B700691AB8 /* AppDelegate.swift */,
 				987DAB9A216D57B700691AB8 /* MemeEditorViewController.swift */,
 				98DA804B21B0403D00CE3A22 /* MemeTableViewController.swift */,
+				98DA805021B556CB00CE3A22 /* MemeCollectionViewController.swift */,
 				981E072C2174C77B005FAAA3 /* Meme.swift */,
 				987DAB9C216D57B700691AB8 /* Main.storyboard */,
 				987DAB9F216D57B800691AB8 /* Assets.xcassets */,
@@ -91,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				98DA804D21B0476D00CE3A22 /* MemeTableViewCell.swift */,
+				98DA805221B5579000CE3A22 /* MemeCollectionViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -169,7 +178,10 @@
 				987DAB9B216D57B700691AB8 /* MemeEditorViewController.swift in Sources */,
 				987DAB99216D57B700691AB8 /* AppDelegate.swift in Sources */,
 				981E072B2174C1E8005FAAA3 /* TextFieldDelegate.swift in Sources */,
+				98DA805521B55A3E00CE3A22 /* CollectionViewDelegateFlowLayout.swift in Sources */,
+				98DA805321B5579000CE3A22 /* MemeCollectionViewCell.swift in Sources */,
 				98DA804C21B0403D00CE3A22 /* MemeTableViewController.swift in Sources */,
+				98DA805121B556CB00CE3A22 /* MemeCollectionViewController.swift in Sources */,
 				98DA804E21B0476D00CE3A22 /* MemeTableViewCell.swift in Sources */,
 				981E07292174BD9A005FAAA3 /* ImagePickerControllerDelegate.swift in Sources */,
 				981E072D2174C77B005FAAA3 /* Meme.swift in Sources */,
