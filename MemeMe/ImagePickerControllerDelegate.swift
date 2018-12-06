@@ -15,6 +15,7 @@ extension MemeEditorViewController: UIImagePickerControllerDelegate, UINavigatio
         if let image = info[.originalImage] as? UIImage {
             imageView.image = image
             shareButton.isEnabled = true
+            doneButton.isEnabled = true
         } else {
             shareButton.isEnabled = false
         }

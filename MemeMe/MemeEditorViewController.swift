@@ -18,16 +18,12 @@ class MemeEditorViewController: UIViewController {
     @IBOutlet var topTextField: UITextField!
     @IBOutlet var bottomTextField: UITextField!
     @IBOutlet var shareButton: UIBarButtonItem!
-    @IBOutlet var cameraButton: UIBarButtonItem!
     @IBOutlet var cancelButton: UIBarButtonItem!
+    @IBOutlet var doneButton: UIBarButtonItem!
     
     // MARK: Properties
     
-    var memes: [Meme] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.memes
-    }
-    
+    var meme = Meme()
     let imagePicker = UIImagePickerController()
     let topTextFieldDelegate = TextFieldDelegate(defaultText: "TOP")
     let bottomTextFieldDelegate = TextFieldDelegate(defaultText: "BOTTOM")
@@ -38,6 +34,21 @@ class MemeEditorViewController: UIViewController {
         .strokeWidth: -3.0
     ]
     
+    // MARK: Computed Properties
+    
+    var memes: [Meme] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.memes
+    }
+    
+    var deviceHasCamera: Bool {
+        return UIImagePickerController.isSourceTypeAvailable(.camera)
+    }
+    
+    var updatingMeme: Bool {
+        return meme.id != nil
+    }
+    
     // MARK: Life Cycle Methods
     
     override func viewDidLoad() {
@@ -45,16 +56,23 @@ class MemeEditorViewController: UIViewController {
         
         imagePicker.delegate = self
         
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        
         // Disallow the user to dismiss the editor if there are no memes.
         if memes.isEmpty {
             cancelButton.isEnabled = false
             cancelButton.tintColor = .clear
         }
         
+        // Disable the done button until an image is selected.
+        if !updatingMeme {
+            doneButton.isEnabled = false
+        }
+        
+        // Setup both text fields.
         setupTextField(topTextField, delegate: topTextFieldDelegate)
         setupTextField(bottomTextField, delegate: bottomTextFieldDelegate)
+        
+        // Allow the image view to be tapped to change the image.
+        setupImageView(imageView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,6 +95,12 @@ class MemeEditorViewController: UIViewController {
         textField.text = delegate.defaultText
     }
     
+    func setupImageView(_ imageView: UIImageView) {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(presentImagePickerSourceTypeActionSheet))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     func generateMemedImage() -> UIImage {
         toggleBars()
         
@@ -96,15 +120,28 @@ class MemeEditorViewController: UIViewController {
     }
     
     func save() {
-        let meme = Meme(
-            topText: topTextField.text!,
-            bottomText: bottomTextField.text!,
-            originalImage: imageView.image!,
-            memedImage: generateMemedImage()
-        )
-        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.memes.append(meme)
+        
+        if updatingMeme {
+            guard let i = appDelegate.memes.index(where: { $0.id == meme.id }) else { return }
+            appDelegate.memes[i].topText = topTextField.text!
+            appDelegate.memes[i].bottomText = bottomTextField.text!
+            appDelegate.memes[i].originalImage = imageView.image!
+            appDelegate.memes[i].memedImage = generateMemedImage()
+        } else {
+            meme.topText = topTextField.text!
+            meme.bottomText = bottomTextField.text!
+            meme.originalImage = imageView.image!
+            meme.memedImage = generateMemedImage()
+            meme.id = appDelegate.memes.count + 1
+            
+            appDelegate.memes.insert(meme, at: 0)
+        }
+    }
+    
+    func presentImagePicker(sourceType: UIImagePickerController.SourceType) {
+        imagePicker.sourceType = sourceType
+        present(imagePicker, animated: true, completion: nil)
     }
     
     // MARK: Keyboard Related Methods
@@ -139,14 +176,29 @@ class MemeEditorViewController: UIViewController {
     
     // MARK: Actions
     
-    @IBAction func pickImageFromCamera() {
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    @IBAction func pickImageFromPhotoLibrary() {
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+    @IBAction func presentImagePickerSourceTypeActionSheet() {
+        if !deviceHasCamera {
+            presentImagePicker(sourceType: .photoLibrary)
+            return
+        }
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Take a Photo", style: .default) { _ in
+            self.presentImagePicker(sourceType: .camera)
+        }
+        
+        let photoLibraryAction = UIAlertAction(title: "Choose From Photo Library", style: .default) { _ in
+            self.presentImagePicker(sourceType: .photoLibrary)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        actionSheet.addAction(cameraAction)
+        actionSheet.addAction(photoLibraryAction)
+        actionSheet.addAction(cancelAction)
+        
+        present(actionSheet, animated: true, completion: nil)
     }
     
     @IBAction func shareMeme() {
@@ -156,16 +208,19 @@ class MemeEditorViewController: UIViewController {
         activityView.completionWithItemsHandler = { activityType, completed, returnedItems, activityError in
             if completed {
                 self.save()
-                self.dismiss()
+                self.dismiss(animated: true, completion: nil)
             }
-            
-            return
         }
         
         present(activityView, animated: true, completion: nil)
     }
     
-    @IBAction func dismiss() {
+    @IBAction func cancel() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func done() {
+        save()
         dismiss(animated: true, completion: nil)
     }
 }

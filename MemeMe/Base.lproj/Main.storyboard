@@ -129,12 +129,12 @@
                                     <navigationItem title="New Meme" id="yHi-a7-kpX">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="bsX-qe-DPc">
                                             <connections>
-                                                <action selector="dismiss" destination="BYZ-38-t0r" id="DiC-l6-3V4"/>
+                                                <action selector="cancel" destination="BYZ-38-t0r" id="uMl-Mi-C2E"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="action" id="Bdn-VR-laB">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="oSa-3i-16W">
                                             <connections>
-                                                <action selector="shareMeme" destination="BYZ-38-t0r" id="UOR-Ds-BxD"/>
+                                                <action selector="done" destination="BYZ-38-t0r" id="Sim-HT-a78"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -146,19 +146,17 @@
                                     <constraint firstAttribute="height" constant="44" id="bUf-MN-FSc"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem systemItem="flexibleSpace" id="oqH-kO-Osk"/>
-                                    <barButtonItem enabled="NO" systemItem="camera" id="QBh-7S-ea2">
+                                    <barButtonItem image="Image" id="d34-fj-Myb" userLabel="Image Button">
                                         <connections>
-                                            <action selector="pickImageFromCamera" destination="BYZ-38-t0r" id="cbg-Q6-3NJ"/>
+                                            <action selector="presentImagePickerSourceTypeActionSheet" destination="BYZ-38-t0r" id="w2L-W9-oDi"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="64" systemItem="fixedSpace" id="0Rn-qD-mQ9"/>
-                                    <barButtonItem systemItem="organize" id="LUS-WV-6V5" userLabel="Import">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="8UG-gh-UAq"/>
+                                    <barButtonItem enabled="NO" systemItem="action" id="Bdn-VR-laB">
                                         <connections>
-                                            <action selector="pickImageFromPhotoLibrary" destination="BYZ-38-t0r" id="ihE-Gb-Se0"/>
+                                            <action selector="shareMeme" destination="BYZ-38-t0r" id="UOR-Ds-BxD"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem systemItem="flexibleSpace" id="9iv-PM-meN"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -207,8 +205,8 @@
                     </view>
                     <connections>
                         <outlet property="bottomTextField" destination="8mh-QJ-YIg" id="dPy-pz-kje"/>
-                        <outlet property="cameraButton" destination="QBh-7S-ea2" id="y2B-A4-BB1"/>
                         <outlet property="cancelButton" destination="bsX-qe-DPc" id="DPs-pr-Rcq"/>
+                        <outlet property="doneButton" destination="oSa-3i-16W" id="fmP-py-xtb"/>
                         <outlet property="imageView" destination="7gs-Id-5rR" id="JDM-Hs-CUL"/>
                         <outlet property="navbar" destination="qhA-zT-fqk" id="ELC-dZ-bBT"/>
                         <outlet property="shareButton" destination="Bdn-VR-laB" id="taI-ub-89R"/>
@@ -326,6 +324,7 @@
     </scenes>
     <resources>
         <image name="Grid" width="30" height="30"/>
+        <image name="Image" width="30" height="30"/>
         <image name="List" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
