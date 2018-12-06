@@ -1,6 +1,6 @@
-# MemeMe 1.0: Editor
+# MemeMe
 
-Meu próximo app nativo iOS, desenvolvido como parte do Nanodegree da Udacity. Este app permite que o usuário escolha uma imagem (da câmera ou álbum) e insira textos para gerar um meme. Esta é a primeira parte do projeto que contém apenas um ViewController, o editor de memes.
+Meu próximo app nativo iOS, desenvolvido como parte do Nanodegree da Udacity. Este app permite que o usuário escolha uma imagem (da câmera ou álbum) e insira textos para gerar um meme. Os memes salvos são exibidos em uma lista ou grade, divididos por abas.
 
 ### Conceitos utilizados
 
@@ -28,6 +28,23 @@ No desenvolvimento deste app foram aprendidos os seguintes conceitos:
 * Construir uma imagem da tela usando `UIGraphicsBeginImageContext`
 * Compartilhar imagens usando o `UIActivityViewController`
 
+### Changelog
+
+#### v2.0
+
+* Uso do `TabBarController` para dividir os memes salvos entre `TableView` e `CollectionView`
+* Vetor de memes compartilhado entre o app através do `AppDelegate`
+* Uso de `TableView` com um `ViewCell` customizado
+* Uso do `CollectionView` e `FlowLayout`
+* Swipe para deletar um meme na `TableView`
+* Tela de detalhes ao tocar em um item na lista/grade
+* Possibilidade de editar um meme através da tela de detalhes
+* Melhorias no editor
+	* Ajustes nas constraints
+	* Botão `Cancel` que fecha o editor
+	* Botão `Done` que salva o meme localmente (sem a necessidade de compartilhá-lo)
+	* Um único botão para selecionar imagem: se o dispositivo tiver câmera abrirá um Action Sheet para o usuário escolher de onde quer importar, senão abrirá a galeria direto
+	* Tocar na imagem também abre o Action Sheet
 
 ### Instalação
 
