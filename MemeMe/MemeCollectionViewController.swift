@@ -17,6 +17,13 @@ class MemeCollectionViewController: UICollectionViewController {
         return appDelegate.memes
     }
     
+    // MARK: Life Cycle Methods
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+    }
+    
     // MARK: UICollectionViewDataSource Methods
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
