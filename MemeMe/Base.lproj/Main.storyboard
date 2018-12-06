@@ -88,6 +88,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="MemeMe" largeTitleDisplayMode="always" id="rL8-fe-Mz2">
+                        <barButtonItem key="backBarButtonItem" title="Sent Memes" id="zBC-sW-IBt"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="8Pk-ke-xQV">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="presentation" id="Mod-4r-zgk"/>
@@ -293,6 +294,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="MemeMe" largeTitleDisplayMode="always" id="SIH-Rs-sXo">
+                        <barButtonItem key="backBarButtonItem" title="Sent Memes" id="uBH-3U-3RX"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="uVh-NJ-kN5">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="presentation" id="hNP-d6-r8q"/>
@@ -321,6 +323,82 @@
             </objects>
             <point key="canvasLocation" x="-480" y="602"/>
         </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="RZn-bA-Ggh">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailViewController" id="Kf6-jq-yl8" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ias-Vn-8MP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eHj-4S-MdS">
+                                <rect key="frame" x="0.0" y="94" width="414" height="548"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eHj-4S-MdS" secondAttribute="height" multiplier="207:274" id="3Vs-i4-B2l"/>
+                                    <constraint firstAttribute="width" secondItem="eHj-4S-MdS" secondAttribute="height" multiplier="284:163" id="FZ5-Cg-Yrb"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3Vs-i4-B2l"/>
+                                        <exclude reference="FZ5-Cg-Yrb"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="FZ5-Cg-Yrb"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="3Vs-i4-B2l"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eHj-4S-MdS" firstAttribute="centerX" secondItem="ias-Vn-8MP" secondAttribute="centerX" id="5tB-XU-K0d"/>
+                            <constraint firstItem="eHj-4S-MdS" firstAttribute="top" secondItem="XdZ-hZ-rB1" secondAttribute="top" id="MxV-7Q-ggj"/>
+                            <constraint firstItem="eHj-4S-MdS" firstAttribute="leading" secondItem="XdZ-hZ-rB1" secondAttribute="leading" id="Mz4-xk-r5E"/>
+                            <constraint firstItem="eHj-4S-MdS" firstAttribute="trailing" secondItem="XdZ-hZ-rB1" secondAttribute="trailing" id="ZaB-2C-vMV"/>
+                            <constraint firstItem="XdZ-hZ-rB1" firstAttribute="bottom" secondItem="eHj-4S-MdS" secondAttribute="bottom" id="f15-e1-EGL"/>
+                            <constraint firstItem="eHj-4S-MdS" firstAttribute="centerY" secondItem="ias-Vn-8MP" secondAttribute="centerY" id="n9R-sY-Sbl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XdZ-hZ-rB1"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5tB-XU-K0d"/>
+                                <exclude reference="MxV-7Q-ggj"/>
+                                <exclude reference="Mz4-xk-r5E"/>
+                                <exclude reference="ZaB-2C-vMV"/>
+                                <exclude reference="f15-e1-EGL"/>
+                                <exclude reference="n9R-sY-Sbl"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="5tB-XU-K0d"/>
+                                <include reference="MxV-7Q-ggj"/>
+                                <include reference="f15-e1-EGL"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Mz4-xk-r5E"/>
+                                <include reference="ZaB-2C-vMV"/>
+                                <include reference="n9R-sY-Sbl"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="eHj-4S-MdS" id="WRa-Nm-1H4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YHN-BI-zxq" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2359" y="267"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Grid" width="30" height="30"/>
@@ -328,6 +406,6 @@
         <image name="List" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mod-4r-zgk"/>
+        <segue reference="hNP-d6-r8q"/>
     </inferredMetricsTieBreakers>
 </document>

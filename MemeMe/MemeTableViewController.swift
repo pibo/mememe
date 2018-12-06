@@ -49,4 +49,10 @@ class MemeTableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        controller.indexPath = indexPath
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
