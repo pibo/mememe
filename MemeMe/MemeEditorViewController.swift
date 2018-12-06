@@ -62,17 +62,23 @@ class MemeEditorViewController: UIViewController {
             cancelButton.tintColor = .clear
         }
         
-        // Disable the done button until an image is selected.
-        if !updatingMeme {
-            doneButton.isEnabled = false
-        }
-        
         // Setup both text fields.
         setupTextField(topTextField, delegate: topTextFieldDelegate)
         setupTextField(bottomTextField, delegate: bottomTextFieldDelegate)
         
         // Allow the image view to be tapped to change the image.
         setupImageView(imageView)
+        
+        if updatingMeme {
+            navbar.items?.first?.title = "Edit Meme"
+            shareButton.isEnabled = true
+            imageView.image = meme.originalImage
+            topTextField.text = meme.topText
+            bottomTextField.text = meme.bottomText
+        } else {
+            // Disable the done button until an image is selected.
+            doneButton.isEnabled = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
