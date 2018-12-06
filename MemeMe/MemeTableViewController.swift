@@ -12,9 +12,17 @@ class MemeTableViewController: UITableViewController {
 
     // MARK: Properties
     
+    private var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    // MARK: Computed Properties
+    
     var memes: [Meme] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.memes
+        get {
+            return appDelegate.memes
+        }
+        set {
+            appDelegate.memes = newValue
+        }
     }
     
     // MARK: Life Cycle Methods
@@ -54,5 +62,11 @@ class MemeTableViewController: UITableViewController {
         let controller = storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         controller.indexPath = indexPath
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        memes.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
     }
 }
