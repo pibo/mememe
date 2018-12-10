@@ -46,6 +46,10 @@ No desenvolvimento deste app foram aprendidos os seguintes conceitos:
 	* Um único botão para selecionar imagem: se o dispositivo tiver câmera abrirá um Action Sheet para o usuário escolher de onde quer importar, senão abrirá a galeria direto
 	* Tocar na imagem também abre o Action Sheet
 
+#### v2.0.1
+
+Corrigidos problemas de layout em telas menores.
+
 ### Instalação
 
 Basta clonar o repositório e abrir o arquivo de projeto `MemeMe.xcodeproj`.
